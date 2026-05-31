@@ -1,0 +1,31 @@
+<%- include('partials/header', { title: 'Telegram' }) %>
+<section class="form-card form-panel">
+  <div class="card-header">
+    <h2>Синхронизация Telegram</h2>
+    <p>Привяжите Telegram, чтобы получать уведомления и ускорить доступ.</p>
+  </div>
+  <% if (error) { %>
+    <div class="error"><%= error %></div>
+  <% } %>
+  <div class="card-body">
+    <div class="steps">
+      <div class="step-item">
+        <span>1</span>
+        <p>Нажмите кнопку Telegram ниже.</p>
+      </div>
+      <div class="step-item">
+        <span>2</span>
+        <p>Выберите свой аккаунт в Telegram.</p>
+      </div>
+      <div class="step-item">
+        <span>3</span>
+        <p>Подтвердите синхронизацию и вернитесь в кабинет.</p>
+      </div>
+    </div>
+    <div class="telegram-widget">
+      <script async src="https://telegram.org/js/telegram-widget.js?19" data-telegram-login="<%= botName %>" data-size="large" data-userpic="false" data-request-access="write" data-lang="ru" data-auth-url="/auth/telegram"></script>
+    </div>
+    <p class="hint">Если бот ещё не создан, создайте его в <a href="https://t.me/BotFather" target="_blank">BotFather</a> и настройте токен в `.env`.</p>
+  </div>
+</section>
+<%- include('partials/footer') %>

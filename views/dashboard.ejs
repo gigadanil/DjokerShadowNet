@@ -1,0 +1,43 @@
+<%- include('partials/header', { title: 'Личный кабинет' }) %>
+<section class="dashboard-grid">
+  <div class="dashboard-card">
+    <div class="card-header">
+      <h2>Привет, <%= user.username %></h2>
+      <p>Ваш аккаунт VPN готов к использованию.</p>
+    </div>
+    <div class="card-row">
+      <div>
+        <p class="label">Логин</p>
+        <p class="value"><%= user.username %></p>
+      </div>
+      <div>
+        <p class="label">Telegram</p>
+        <p class="value"><%= user.telegram_username ? '@' + user.telegram_username : 'Не привязан' %></p>
+      </div>
+    </div>
+    <div class="card-row" style="margin-top: 20px;">
+      <div>
+        <p class="label">VPN ключ</p>
+        <p class="value"><%= user.vpn_key %></p>
+      </div>
+      <div>
+        <p class="label">Сервер</p>
+        <p class="value"><%= vpnServerHost %> : <%= vpnServerPort %></p>
+      </div>
+    </div>
+    <div class="action-grid">
+      <a class="button" href="/telegram"><%= user.telegram_username ? 'Обновить Telegram' : 'Привязать Telegram' %></a>
+      <a class="button button-outline" href="/vpn">Статус 3X-UI</a>
+    </div>
+  </div>
+  <div class="dashboard-card summary-card">
+    <h3>Ваши возможности</h3>
+    <ul>
+      <li>Просмотр статуса 3X-UI</li>
+      <li>Синхронизация Telegram</li>
+      <li>Управление аккаунтом</li>
+    </ul>
+    <p class="info-text">В будущем здесь можно добавить тарифы, подключение к VPN-серверам и историю сессий.</p>
+  </div>
+</section>
+<%- include('partials/footer') %>

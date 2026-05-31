@@ -1,0 +1,21 @@
+<%- include('partials/header', { title: 'Регистрация' }) %>
+<section class="form-card form-panel">
+  <div class="card-header">
+    <h2>Регистрация</h2>
+    <p>Создайте аккаунт и получите доступ к кабинету VPN.</p>
+  </div>
+  <% if (error) { %>
+    <div class="error"><%= error %></div>
+  <% } %>
+  <form action="/register" method="post">
+    <label>Логин
+      <input type="text" name="username" required />
+    </label>
+    <label>Пароль
+      <input type="password" name="password" required />
+    </label>
+    <button type="submit">Создать аккаунт</button>
+  </form>
+  <p class="hint">Уже есть аккаунт? <a href="/login">Войти</a></p>
+</section>
+<%- include('partials/footer') %>

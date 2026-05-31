@@ -1,0 +1,21 @@
+<%- include('partials/header', { title: 'Вход' }) %>
+<section class="form-card form-panel">
+  <div class="card-header">
+    <h2>Войти</h2>
+    <p>Введите логин и пароль, чтобы открыть личный кабинет.</p>
+  </div>
+  <% if (error) { %>
+    <div class="error"><%= error %></div>
+  <% } %>
+  <form action="/login" method="post">
+    <label>Логин
+      <input type="text" name="username" required />
+    </label>
+    <label>Пароль
+      <input type="password" name="password" required />
+    </label>
+    <button type="submit">Войти</button>
+  </form>
+  <p class="hint">Нет аккаунта? <a href="/register">Зарегистрироваться</a></p>
+</section>
+<%- include('partials/footer') %>

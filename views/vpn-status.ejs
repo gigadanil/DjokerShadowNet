@@ -1,0 +1,58 @@
+<%- include('partials/header', { title: 'Статус VPN 3X-UI' }) %>
+<section class="dashboard-card vpn-card">
+  <div class="card-header">
+    <h2>Статус 3X-UI</h2>
+    <p>Информация о подключении и пользователе из вашей панели 3X-UI.</p>
+  </div>
+  <% if (error) { %>
+    <div class="error"><%= error %></div>
+  <% } %>
+  <% if (xuiInfo) { %>
+    <div class="vpn-grid">
+      <div class="stat-block">
+        <span>Пользователь</span>
+        <strong><%= xuiInfo.username || user.username %></strong>
+      </div>
+      <div class="stat-block">
+        <span>Статус</span>
+        <strong><%= xuiInfo.status || 'Неизвестно' %></strong>
+      </div>
+      <div class="stat-block">
+        <span>IP / порт</span>
+        <strong><%= xuiInfo.ip || '—' %> : <%= xuiInfo.port || '—' %></strong>
+      </div>
+      <div class="stat-block">
+        <span>Трафик</span>
+        <strong><%= xuiInfo.traffic || '—' %></strong>
+      </div>
+    </div>
+    <div class="vpn-grid">
+      <div class="stat-block">
+        <span>VPN ключ</span>
+        <strong><%= user.vpn_key %></strong>
+      </div>
+      <div class="stat-block">
+        <span>Сервер</span>
+        <strong><%= vpnServerHost %> : <%= vpnServerPort %></strong>
+      </div>
+      <div class="stat-block">
+        <span>Протокол</span>
+        <strong><%= vpnProtocol %></strong>
+      </div>
+      <div class="stat-block">
+        <span>Сервис</span>
+        <strong><%= vpnName %></strong>
+      </div>
+    </div>
+    <div class="json-box">
+      <h3>Данные API</h3>
+      <pre><%= JSON.stringify(xuiInfo, null, 2) %></pre>
+    </div>
+  <% } else { %>
+    <div class="empty-state">
+      <p>API 3X-UI не настроен или не удалось получить данные.</p>
+      <p>Заполните <code>XUI_API_URL</code>, <code>XUI_API_KEY</code> и <code>XUI_API_USER_PATH</code> в файле <code>.env</code>.</p>
+    </div>
+  <% } %>
+</section>
+<%- include('partials/footer') %>
