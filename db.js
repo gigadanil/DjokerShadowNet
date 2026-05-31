@@ -28,6 +28,15 @@ db.serialize(() => {
     )
   `);
 
+  db.run(`
+    CREATE TABLE IF NOT EXISTS otp_codes (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      email TEXT UNIQUE,
+      code TEXT,
+      expires_at INTEGER
+    )
+  `);
+
   db.all('PRAGMA table_info(users)', (err, rows) => {
     if (err) {
       console.error('Ошибка проверки структуры базы данных', err.message);
